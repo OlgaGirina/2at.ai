@@ -1,15 +1,22 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
+//import { LoginPage } from '../pages/LoginPage';
 import { NavigationPage } from '../pages/NavigationPage';
-import { PROVIDER } from './provider.config';
+//import { PROVIDER } from './provider.config';
 import { generateRandomPassword } from '../utils/randomData';
 
+const email = process.env.PROVIDER_EMAIL!;
+const password = process.env.PROVIDER_PASSWORD!;
+const existingEmail = process.env.EXISTING_EMAIL!;
+
+if (!email || !password) {
+  throw new Error('Missing PROVIDER_EMAIL or PROVIDER_PASSWORD in .env');
+}
 test.describe('PROVIDER PROFILE TESTS', () => {
   test.beforeEach(async ({ page }) => {
     const navigation = new NavigationPage (page);
-    const loginPage = new LoginPage(page);
-    await navigation.goToLogin();
-    await loginPage.login(PROVIDER.email, PROVIDER.password);
+   // const loginPage = new LoginPage(page);
+  //  await navigation.goToLogin();
+  //  await loginPage.login(PROVIDER.email, PROVIDER.password);
     // идём сразу в профиль
  // await navigation.goToProviderProfile('ef5f17d8-b391-4f20-80ed-7dbbb93d9d37')
   await navigation.goToProviderProfile('5ba548b4-d64a-4ebc-a460-f63bd4649512')
@@ -21,8 +28,8 @@ test.describe('PROVIDER PROFILE TESTS', () => {
     await updateButton.click();
     const modal = page.locator('.ant-modal-content');
     await expect(modal).toBeVisible({ timeout: 7000 });
-    await modal.getByPlaceholder('Enter login').fill(PROVIDER.existingEmail);
-    await modal.getByPlaceholder('Required when changing password or login').fill(PROVIDER.password);
+    await modal.getByPlaceholder('Enter login').fill(existingEmail);
+    await modal.getByPlaceholder('Required when changing password or login').fill(password);
     await modal.getByRole('button', { name: 'Change' }).click();
 
     // отобаражается валидационная ошибка под полем email
@@ -50,7 +57,7 @@ test.describe('PROVIDER PROFILE TESTS', () => {
     const randomPassword = generateRandomPassword(10);
     await page.getByRole('button', { name: 'Update' }).click();
     const modal = page.locator('.ant-modal-content');
-    await modal.getByPlaceholder('Enter login').fill(PROVIDER.email);
+    await modal.getByPlaceholder('Enter login').fill(email);
     await modal.getByPlaceholder('Leave empty to keep current password').fill(randomPassword);
     await modal.getByPlaceholder('Required when changing password or login').fill(randomPassword);
     await modal.getByRole('button', { name: 'Change' }).click();

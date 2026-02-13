@@ -4,16 +4,16 @@ import { defineConfig, devices } from '@playwright/test';
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
+ import dotenv from 'dotenv';
+ import path from 'path';
+ dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
   testDir: './tests',
-  testIgnore: ['tests/auth.setup.ts'],
+  //testIgnore: ['tests/auth.setup.ts'],
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -28,8 +28,8 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
-
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+/* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    baseURL: 'https://2at.ai',      
     trace: 'on-first-retry',
     headless: true, 
     ignoreHTTPSErrors: true,   // ⬅️ SSL ошибки игнорируем
@@ -41,23 +41,62 @@ export default defineConfig({
 
   },
   
-
   /* Configure projects for major browsers */
+ 
   projects: [
+
+     // CLIENT SETUP
+  {
+    name: 'setup-client',
+    testMatch: /auth\.client\.setup\.ts/,
+  },
+
+  // PROVIDER SETUP
+  {
+    name: 'setup-provider',
+    testMatch: /auth\.provider\.setup\.ts/,
+  },
+
+  // CLIENT PROFILE
+  {
+    name: 'client-profile',
+    dependencies: ['setup-client'],
+    use: {
+      ...devices['Desktop Chrome'],
+      storageState: 'authClient.json',
+    },
+    testMatch: /client\.spec\.ts/,
+  },
+
+  // PROVIDER PROFILE
+  {
+    name: 'provider-profile',
+    dependencies: ['setup-provider'],
+    use: {
+      ...devices['Desktop Chrome'],
+      storageState: 'authProvider.json',
+    },
+    testMatch: /provider\.spec\.ts/,
+  },
+
+    // 2️⃣ AUTH тесты (без storage)
     {
-      name: 'chromium',
+      name: 'auth',
       use: {
         ...devices['Desktop Chrome'],
-        launchOptions: {
-          args: ['--ignore-certificate-errors',
-            '--ignore-certificate-errors-spki-list',
-            '--test-type'
-          ],
-        },
       },
+      testMatch: /authTestv2\.spec\.ts/,
     },
-    { name: 'setup', testMatch: /.*\.setup\.ts/ },
-    { name: 'tests', dependencies: ['setup'] },
+
+    // 3️⃣ REGISTRATION тесты (без storage)
+    {
+      name: 'registration',
+      use: {
+        ...devices['Desktop Chrome'],
+      },
+      testMatch: /registration\.spec\.ts/,
+    },
+
 
   /*  {
       name: 'firefox',

@@ -117,7 +117,6 @@ await frame.locator('input[placeholder="Enter password"]').fill(data.password);
 // 4️⃣ Кликаем Enter после пароля ВНУТРИ iframe
 await frame.locator('input[type="password"]').press('Enter');
 
-
  /*   // Вводим данные
     await page.getByPlaceholder('Enter email').fill(data.email);
     await page.getByPlaceholder('Enter password').fill(data.password);

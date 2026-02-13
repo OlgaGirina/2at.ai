@@ -1,18 +1,31 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { NavigationPage } from '../pages/NavigationPage';
-import { CLIENT } from './client.config';
+//import { CLIENT } from './client.config';
 
+const email = process.env.CLIENT_EMAIL!;
+const password = process.env.CLIENT_PASSWORD!;
+const existingEmail = process.env.EXISTING_EMAIL!;
+
+if (!email || !password) {
+  throw new Error('Missing CLIENT_EMAIL or CLIENT_PASSWORD in .env');
+}
 test.describe('CLIENT PROFILE TESTS', () => {
-  test.beforeEach(async ({ page }) => {
+   test.beforeEach(async ({ page }) => {
     const navigation = new NavigationPage (page);
-    const loginPage = new LoginPage(page);
-    await navigation.goToLogin();
-    await loginPage.login(CLIENT.email, CLIENT.password);
+  //  const loginPage = new LoginPage(page);
 
-    // идём сразу в профиль
-    await navigation.goToClientProfile('105')
-   // await page.goto(CLIENT.profileUrl, { waitUntil: 'domcontentloaded' });
+  // await navigation.goToLogin();
+  //  await loginPage.login(CLIENT.email, CLIENT.password);
+
+  // идём сразу в профиль
+   await navigation.goToClientProfile('105')
+  // await page.goto(CLIENT.profileUrl, { waitUntil: 'domcontentloaded' });
+  // await page.goto('https://2at.ai/client/profile/105');
+
+    await expect(page.getByRole('button', { name: 'Update' }))
+      .toBeVisible();
+
   });
 
    test('CLIENT-02 | Cannot update email to already registered one', async ({ page }) => {
@@ -20,9 +33,9 @@ test.describe('CLIENT PROFILE TESTS', () => {
     await page.getByRole('button', { name: 'Update' }).click();
     const modal = page.locator('.ant-modal-content');
 
-    await modal.getByPlaceholder('Enter login').fill(CLIENT.existingEmail);
+    await modal.getByPlaceholder('Enter login').fill(existingEmail);
    // await modal.getByPlaceholder('Leave empty to keep current password').fill('ShPass');
-    await modal.getByPlaceholder('Required when changing password or login').fill(CLIENT.password);
+    await modal.getByPlaceholder('Required when changing password or login').fill(password);
     await modal.getByRole('button', { name: 'Change' }).click();
 // отобаражается валидационная ошибка под полем email
 const error = modal.locator('#login_help .ant-form-item-explain-error');
@@ -41,7 +54,7 @@ await expect(error).toContainText(/This email is already registered. Please use 
     await page.getByRole('button', { name: 'Update' }).click();
     const modal = page.locator('.ant-modal-content');
 
-     await modal.getByPlaceholder('Enter login').fill('olik2555@rambler.ru');
+     await modal.getByPlaceholder('Enter login').fill(existingEmail);
      await modal.getByPlaceholder('Required when changing password or login').fill('');
 
      await modal.getByRole('button', { name: 'Change' }).click();
@@ -53,7 +66,7 @@ await expect(error).toContainText(/This email is already registered. Please use 
    // await page.getByRole('button', { name: 'Close' }).click();
     await page.getByRole('button', { name: 'Update' }).click();
     const modal = page.locator('.ant-modal-content');
-    await modal.getByPlaceholder('Enter login').fill(/*'/emailtestclient@gmail.com'*/ CLIENT.email);
+    await modal.getByPlaceholder('Enter login').fill(/*'/emailtestclient@gmail.com'*/ email);
     await modal.getByPlaceholder('Leave empty to keep current password').fill('TestNew pass');
     await modal.getByPlaceholder('Required when changing password or login').fill('WrongOldPass');
 
@@ -73,9 +86,9 @@ await expect(error).toContainText(/This email is already registered. Please use 
     const modal = page.locator('.ant-modal-content');
 
    // await modal.getByPlaceholder('Enter login').fill('new_email@gmail.com');
-   await modal.getByPlaceholder('Enter login').fill(CLIENT.email);
+   await modal.getByPlaceholder('Enter login').fill(email);
     await modal.getByPlaceholder('Leave empty to keep current password').fill('ShPass');
-    await modal.getByPlaceholder('Required when changing password or login').fill(CLIENT.password);
+    await modal.getByPlaceholder('Required when changing password or login').fill(password);
     await modal.getByRole('button', { name: 'Change' }).click();
 
     const error = modal.locator('#newPswd_help .ant-form-item-explain-error');

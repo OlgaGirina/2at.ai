@@ -1,0 +1,69 @@
+{
+  "cookies": [
+    {
+      "name": "_ga",
+      "value": "GA1.1.1580614278.1771010446",
+      "domain": ".2at.ai",
+      "path": "/",
+      "expires": 1805570445.522789,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_cs_c",
+      "value": "0",
+      "domain": ".2at.ai",
+      "path": "/",
+      "expires": 1805174445,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_GJGWC9WP58",
+      "value": "GS2.1.s1771010445$o1$g1$t1771010446$j59$l0$h0",
+      "domain": ".2at.ai",
+      "path": "/",
+      "expires": 1805570446.352419,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_cs_id",
+      "value": "12ff3593-fb89-a070-8535-79243689865d.1771010445.1.1771010446.1771010445.1.1805174445570.1.x",
+      "domain": ".2at.ai",
+      "path": "/",
+      "expires": 1805174445,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_cs_s",
+      "value": "2.0.U.9.1771012246353",
+      "domain": ".2at.ai",
+      "path": "/",
+      "expires": 1771012246,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://2at.ai",
+      "localStorage": [
+        {
+          "name": "token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlbWFpbHByb3ZpZGVyQGdtYWlsLmNvbSIsInVpZCI6IjI3MjAiLCJ1dWlkIjoiNzhiNGViMmUtMDc2My00ZjdlLTgyOTMtMzgwMDAzYmJiMjc0IiwiYnM2NCI6IlpXMWhhV3h3Y205MmFXUmxja0JuYldGcGJDNWpiMjB5TnpJd056aGlOR1ZpTW1VdE1EYzJNeTAwWmpkbExUZ3lPVE10TXpnd01EQXpZbUppTWpjMCIsImV4cCI6MTc3MTI2OTY0Nn0.eMKp2y8-j3f8FBHI-ug6_6YdC8NidXuRl7zbTNAfZWo"
+        },
+        {
+          "name": "ce_bot_detector",
+          "value": "{\"visits\":0,\"clicks\":1,\"firstVisitTime\":1771010445762,\"detected\":false}"
+        }
+      ]
+    }
+  ]
+}

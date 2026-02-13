@@ -1,52 +1,54 @@
 {
   "cookies": [
     {
-      "name": "YSC",
-      "value": "VrvWAtIpT8U",
-      "domain": ".youtube.com",
+      "name": "_ga",
+      "value": "GA1.1.969628986.1770992580",
+      "domain": ".2at.ai",
       "path": "/",
-      "expires": -1,
-      "httpOnly": true,
-      "secure": true,
-      "sameSite": "None",
-      "partitionKey": "https://2at.ai",
-      "_crHasCrossSiteAncestor": true
+      "expires": 1805552580.495292,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
     },
     {
-      "name": "VISITOR_INFO1_LIVE",
-      "value": "fB_iD48q2HY",
-      "domain": ".youtube.com",
+      "name": "_cs_c",
+      "value": "0",
+      "domain": ".2at.ai",
       "path": "/",
-      "expires": 1777204189.593993,
-      "httpOnly": true,
+      "expires": 1805156580,
+      "httpOnly": false,
       "secure": true,
-      "sameSite": "None",
-      "partitionKey": "https://2at.ai",
-      "_crHasCrossSiteAncestor": true
+      "sameSite": "Lax"
     },
     {
-      "name": "VISITOR_PRIVACY_METADATA",
-      "value": "CgJOTBIhEh0SGwsMDg8QERITFBUWFxgZGhscHR4fICEiIyQlJiAT",
-      "domain": ".youtube.com",
+      "name": "_cs_id",
+      "value": "0269491b-fb89-ae6f-fd74-4feae71e5719.1770992580.1.1770992580.1770992580.1.1805156580648.1.x",
+      "domain": ".2at.ai",
       "path": "/",
-      "expires": 1777204189.594035,
-      "httpOnly": true,
+      "expires": 1805156580,
+      "httpOnly": false,
       "secure": true,
-      "sameSite": "None",
-      "partitionKey": "https://2at.ai",
-      "_crHasCrossSiteAncestor": true
+      "sameSite": "Lax"
     },
     {
-      "name": "__Secure-ROLLOUT_TOKEN",
-      "value": "CPLvo-7b_bnBUhC_-7Xd6caQAxi64urn6caQAw%3D%3D",
-      "domain": ".youtube.com",
+      "name": "_cs_s",
+      "value": "1.0.U.9.1770994380669",
+      "domain": ".2at.ai",
       "path": "/",
-      "expires": 1777204189.593882,
-      "httpOnly": true,
+      "expires": 1770994380,
+      "httpOnly": false,
       "secure": true,
-      "sameSite": "None",
-      "partitionKey": "https://2at.ai",
-      "_crHasCrossSiteAncestor": true
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_GJGWC9WP58",
+      "value": "GS2.1.s1770992580$o1$g1$t1770992580$j60$l0$h0",
+      "domain": ".2at.ai",
+      "path": "/",
+      "expires": 1805552580.674076,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
     }
   ],
   "origins": [
@@ -54,33 +56,8 @@
       "origin": "https://2at.ai",
       "localStorage": [
         {
-          "name": "soundEnabled",
-          "value": "true"
-        },
-        {
           "name": "token",
-          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJDbGllbnQyNDEwMjAyNTJAZ21haWwuY29tIiwidWlkIjoiNTI4NiIsInV1aWQiOiJjMzU1MmY5Ny05ZWFiLTQ2ODItOTZkMi1mNmQwOWQ0NGI2YzIiLCJiczY0IjoiUTJ4cFpXNTBNalF4TURJd01qVXlRR2R0WVdsc0xtTnZiVFV5T0Raak16VTFNbVk1TnkwNVpXRmlMVFEyT0RJdE9UWmtNaTFtTm1Rd09XUTBOR0kyWXpJPSIsImV4cCI6MTc2MTkxMTM4NX0.828D1cOguyTuqyVwTOtt0w9q7BcDNxvLlBYd6GnLPCE"
-        },
-        {
-          "name": "textNotificationEnabled",
-          "value": "true"
-        }
-      ]
-    },
-    {
-      "origin": "https://www.youtube.com",
-      "localStorage": [
-        {
-          "name": "yt-remote-connected-devices",
-          "value": "{\"data\":\"[]\",\"expiration\":1761738591046,\"creation\":1761652191046}"
-        },
-        {
-          "name": "yt-remote-device-id",
-          "value": "{\"data\":\"ece46f40-ad11-4e67-9748-aaff9795de4a\",\"expiration\":1793188172788,\"creation\":1761652172788}"
-        },
-        {
-          "name": "ytidb::LAST_RESULT_ENTRY_KEY",
-          "value": "{\"data\":{\"hasSucceededOnce\":true},\"expiration\":1764244190938,\"creation\":1761652190938}"
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJDbGllbnQyNDEwMjAyNTJAZ21haWwuY29tIiwidWlkIjoiNTI4NiIsInV1aWQiOiJjMzU1MmY5Ny05ZWFiLTQ2ODItOTZkMi1mNmQwOWQ0NGI2YzIiLCJiczY0IjoiUTJ4cFpXNTBNalF4TURJd01qVXlRR2R0WVdsc0xtTnZiVFV5T0Raak16VTFNbVk1TnkwNVpXRmlMVFEyT0RJdE9UWmtNaTFtTm1Rd09XUTBOR0kyWXpJPSIsImV4cCI6MTc3MTI1MTc4MH0.kyxenRBVxYgoMVzpScbr-FutZ3VFGP2J6bFa1lxs8Bg"
         }
       ]
     }
